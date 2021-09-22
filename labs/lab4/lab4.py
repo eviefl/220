@@ -1,8 +1,8 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: evie fleischman
+lab4.py
 """
-
+import math
 from graphics import *
 
 
@@ -30,11 +30,17 @@ def squares():
 
     # create a space to instruct user
     inst_pt = Point(width / 2, height - 10)
-    instructions = Text(inst_pt, "Click to move circle")
+    instructions = Text(inst_pt, "Click to move square")
     instructions.draw(win)
 
     # builds a circle
-    shape = Circle(Point(50, 50), 20)
+    # shape = Circle(Point(50, 50), 20)
+    # shape.setOutline("red")
+    # shape.setFill("red")
+    # shape.draw(win)
+
+    # builds a rectangle
+    shape = Rectangle(Point(50, 50), Point(70, 70))
     shape.setOutline("red")
     shape.setFill("red")
     shape.draw(win)
@@ -42,16 +48,27 @@ def squares():
     # allows the user to click multiple times to move the circle
     for i in range(num_clicks):
         p = win.getMouse()
-        c = shape.getCenter()  # center of circle
+        # makes new rectangles
+        shape = Rectangle(Point(p.getX()-10, p.getY() - 10), Point(p.getX() + 10, p.getY() + 10))
+        shape.setOutline("red")
+        shape.setFill("red")
+        shape.draw(win)
 
         # move amount is distance from center of circle to the
         # point where the user clicked
-        dx = p.getX() - c.getX()
-        dy = p.getY() - c.getY()
+        dx = p.getX() - p.getX()
+        dy = p.getY() - p.getY()
         shape.move(dx, dy)
+
+    instructions.undraw()
+    inst_pt = Point(width / 2, height - 10)
+    instructions = Text(inst_pt, "Click to Quit")
+    instructions.draw(win)
 
     win.getMouse()
     win.close()
+
+squares()
 
 
 def rectangle():
@@ -62,14 +79,70 @@ def rectangle():
          Print the perimeter and area of the rectangle.
     Formulas: area = (length)(width)   and    perimeter = 2(length+width)
     """
-    pass
+
+    width = 400
+    height = 400
+
+    win = GraphWin("Rectangle", width, height)
+
+    p = win.getMouse()
+    p2 = win.getMouse()
+    r = Rectangle(p, p2)
+    r.draw(win)
+    length = p2.getY() - p.getY()
+    wid = p2.getX() - p.getX()
+    area = abs(length*width)
+    perimeter = abs(2 * (length + wid))
+    instructions = Text(Point(width / 2, height - 50), "The area is: " + str(area))
+    instructions.draw(win)
+    instructions = Text(Point(width / 2, height - 30), "The perimeter is: " + str(perimeter))
+    instructions.draw(win)
+    inst_pt = Point(width / 2, height - 10)
+    instructions = Text(inst_pt, "Click to End Program")
+    instructions.draw(win)
+    win.getMouse()
+    win.close()
 
 
-def main():
-    squares()
-    # rectangle()
-    # circle()
-    # pi2()
+rectangle()
 
 
-main()
+def circle():
+    width = 400
+    height = 400
+
+    win = GraphWin("Circle", width, height)
+
+    c1 = win.getMouse()
+    c2 = win.getMouse()
+
+    radius_distance = ((c2.getX() - c1.getX())**2) + ((c2.getY() - c1.getY())**2)
+    radius_distance = math.sqrt(radius_distance)
+
+    c = Circle(c1, radius_distance)
+    c.draw(win)
+
+    instructions = Text(Point(width / 2, height - 40), "The radius is: " + str(radius_distance))
+    instructions.draw(win)
+    instructions = Text(Point(width/2, height-10), "Click to End Program")
+    instructions.draw(win)
+
+    win.getMouse()
+    win.close()
+
+
+circle()
+
+
+def pi2():
+    acc = 0
+    n = eval(input("enter how many times you would like to run the program: "))
+    for i in range(n):
+        num = 4
+        denom = 1 + 2 * i
+        output = (num/denom) * ((-1) * i)
+
+    print(math.pi - acc)
+
+
+pi2()
