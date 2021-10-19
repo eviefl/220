@@ -46,9 +46,9 @@ def window():
         keyword = key_box.getText().upper().replace(" ", "")
         encode = code(message, keyword)
         rectangle_text.setText("Resulting Message: \n\n" + encode)
-        message_text = rectangle_text.clone()
-        message_text.move(win_width/2, win_height/2 + 80)
-        message_text.setText("Click Anywhere to Close")
+        message_pt = Point(win_width / 2, win_height / 2 + 180)
+        message_text = Text(message_pt, "Click Anywhere to Close ")
+        message_text.draw(win)
 
     # closes window after mouse click
     win.getMouse()
