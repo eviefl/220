@@ -89,7 +89,7 @@ def color_shape():
     inst = Text(Point(win_width / 2, win_height - 20), msg)
     inst.draw(win)
 
-    # create circle in window's centern
+    # create circle in window's center
     shape = Circle(Point(win_width / 2, win_height / 2 - 30), 50)
     shape.draw(win)
 

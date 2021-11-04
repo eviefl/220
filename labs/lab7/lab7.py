@@ -20,7 +20,7 @@ def encode():
         new_chr = key_input + ord(i)
         new_chr = chr(new_chr)
         acc = acc+new_chr
-    print(acc)
+    return acc
 
 
 def sphere_area(radius):
@@ -58,7 +58,7 @@ def encode_better():
         new_chr = key + ord(c)
         new_chr = chr(new_chr)
         acc = acc + new_chr
-    print(acc)
+    return acc
 
 
 def main():

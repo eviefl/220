@@ -2,7 +2,7 @@ import json
 
 import pytest
 
-from hw2 import interest
+from hw2 import interestpractice
 from tests import api_service
 from tests import code_style
 
@@ -35,7 +35,7 @@ class TestClass:
     def test_linting(self):
         global code_style_points
         global total
-        points = code_style.code_style('interest.py', code_style_points)
+        points = code_style.code_style('interestpractice.py', code_style_points)
         total += points
         if not points == code_style_points:
             pytest.xfail(reason="Failed Code Style")
@@ -50,7 +50,7 @@ class TestClass:
             userIn = inp[0]
             i = iter(userIn)
             monkeypatch.setattr('builtins.input', lambda inputMessage: next(i))
-            interest.main()
+            interestpractice.main()
             captured = capfd.readouterr()
             outputs.append(captured.out.strip())
 
@@ -91,7 +91,7 @@ class TestClass:
         a = iter(
             [attempt['rate'], attempt['days'], attempt['previousBalance'], attempt['payment'], attempt['paymentDay']])
         monkeypatch.setattr('builtins.input', lambda inputMessage: next(a))
-        interest.main()
+        interestpractice.main()
         captured = capfd.readouterr()
         return float(captured.out.strip())
 
