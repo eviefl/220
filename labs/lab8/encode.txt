@@ -1,0 +1,7 @@
+def encode(message, key):
+    acc = ""
+    for i in message:
+        new_chr = key + ord(i)
+        new_chr = chr(new_chr)
+        acc = acc + new_chr
+    return acc

@@ -1,0 +1,10 @@
+cat
+dog
+tree
+moon
+sun
+butterfly
+star
+flower
+rhino
+frog
