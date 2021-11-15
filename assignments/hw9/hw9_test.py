@@ -74,7 +74,7 @@ class TestClass:
     def test_linter_button(self):
         global tester
         tester.area_start("code style | button")
-        tester.lint('button.py', 12)
+        tester.lint('Button.py', 12)
         tester.area_end("code style | button")
 
     def test_linter_game(self):
